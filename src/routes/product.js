@@ -1,29 +1,18 @@
 const express = require('express');
+const { getAll, getOne, create, update, deleteOne } = require('../controllers/product');
 const router = express.Router();
 
 
-router.get('/products', (req, res) => {
+router.get('/products', getAll);
 
-})
+router.get('/products/:id', getOne);
 
-router.get('/products/:id', (req, res) => {
+router.post('/products', create);
 
-})
+router.put('/products/:id', update);
 
-router.post('/products', (req, res) => {
+router.patch('/products/:id', update);
 
-})
-
-router.put('/products/:id', (req, res) => {
-
-})
-
-router.patch('/products/:id', (req, res) => {
-
-})
-
-router.delete('/products/:id', (req, res) => {
-
-})
+router.delete('/products/:id', deleteOne);
 
 module.exports = router;
