@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Productos</title>
+</head>
+<body>
+
+
+    <% productos.forEach(product => { %>
+        
+        <article>
+
+            <div class="product-image">
+                <img src="<%- product.image %>" alt="Imagen del producto: <%- product.name %>">
+            </div>
+
+            <div class="product-description">
+
+                <h2><%- product.name %></h2>
+                <p><%- product.description %></p>
+                <hr>
+                <h1>$ <%- product.price %></h1>
+
+            </div>
+
+            <div class="product-cta">
+                <button>Comprar</button>
+            </div>
+
+        </article>
+
+    <% }) %>
+
+    
+</body>
+</html>

@@ -1,4 +1,4 @@
-const { readProducts, readProduct, createProduct } = require("../services/product")
+const { readProducts, readProduct, createProduct, deleteProduct, productExists } = require("../services/product")
 
 
 const getAll = (req, res) => {
@@ -28,7 +28,7 @@ const getOne = (req, res) => {
     }
 
     const product = readProduct(id);
-    
+
     if (product.length == 0) {
         return res.status(404).json({
             status: 'error',
@@ -42,13 +42,14 @@ const getOne = (req, res) => {
 
 const create = (req, res) => {
 
-    const { name, price } = req.body;
+    const { name, price, description } = req.body;
 
     console.log(name, price);
 
     const product = {
         name,
-        price
+        price,
+        description
     }
 
     createProduct(product);
@@ -65,7 +66,33 @@ const update = (req, res) => {
 }
 
 const deleteOne = (req, res) => {
-    
+
+    const { id } = req.params;
+
+    if (!productExists(id)) {
+        return res.status(404).json({
+            status: 'error',
+            message: 'product not found'
+        });
+    }
+
+    deleteProduct(id);
+
+    return res.status(200).json({
+        status: 'success',
+        message: 'product deleted'
+    });
+
+}
+
+const getAllWithView = (req, res) => {
+
+    const products = readProducts();
+
+    return res.render('products', {
+        productos: products
+    });
+
 }
 
 module.exports = {
@@ -73,5 +100,6 @@ module.exports = {
     getOne,
     create,
     update,
-    deleteOne
+    deleteOne,
+    getAllWithView
 }

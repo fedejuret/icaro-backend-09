@@ -1,1 +1,20 @@
-[{"id":1,"name":"Producto numero 1","price":200},{"id":2,"name":"Producto numero 2","price":500},{"id":3,"name":"Producto numero 3","price":900},{"id":4,"name":"Producto creado desde insomnia","price":50000},{"id":5,"name":"Producto creado desde insomnia version 2","price":100000}]
+[
+  {
+    "id": 4,
+    "name": "Producto color marron",
+    "description": "loremotbubt9 ib52 925b 295b 2b295b",
+    "price": 50000
+  },
+  {
+    "id": 5,
+    "name": "Productos verdes",
+    "description": "loremotbubt9 ib52 925b 295b 2b295b",
+    "price": 500
+  },
+  {
+    "id": 6,
+    "name": "producto dinamico desde insomnia",
+    "price": 400000,
+    "description": "Hola soy el producto mas dinamico que vistes"
+  }
+]

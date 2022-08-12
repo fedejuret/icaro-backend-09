@@ -1,6 +1,5 @@
 const fs = require('fs');
 
-
 const readProducts = () => {
 
     const products = fs.readFileSync(__dirname + '/../database/products.json');
@@ -37,9 +36,34 @@ const createProduct = (product) => {
 
 }
 
+const deleteProduct = (id) => {
+
+    const products = readProducts();
+
+    const newProduct = products.filter(p => p.id != id);
+
+    fs.writeFileSync(__dirname + '/../database/products.json', JSON.stringify(newProduct));
+
+}
+
+const productExists = (id) => {
+
+    const products = readProducts();
+
+    const product = products.filter(p => p.id == id);
+
+    if (product.length == 0) {
+        return false;
+    }
+
+    return true;
+
+}
 
 module.exports = {
     readProducts,
     readProduct,
-    createProduct
+    createProduct,
+    deleteProduct,
+    productExists
 }

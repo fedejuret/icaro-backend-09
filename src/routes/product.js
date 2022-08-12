@@ -1,7 +1,8 @@
 const express = require('express');
-const { getAll, getOne, create, update, deleteOne } = require('../controllers/product');
+const { getAll, getOne, create, update, deleteOne, getAllWithView } = require('../controllers/product');
 const router = express.Router();
 
+router.get('/products-view', getAllWithView)
 
 router.get('/products', getAll);
 
